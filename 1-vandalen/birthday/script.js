@@ -4,12 +4,34 @@ window.onload = function(){
 
 	
 	var birthday = function(date){
+	
+
+		var now = new Date();
 		
-
-
-			// Din kod här.
-
-
+		var birthday = date.split("-").join(",");
+		
+		birthday = new Date(date);
+		
+		console.log(now);
+		console.log(birthday);
+			
+		
+		var timeDifference = now.getTime() - birthday.getTime() ;
+		
+		var differentDays = (timeDifference / (1000 * 3600 * 24));
+		
+		differentDays %= 365;
+		
+		if (differentDays < 0){
+			differentDays = Math.floor(differentDays);
+			return Math.abs(differentDays);
+		} else if (differentDays > 1){
+			differentDays -= 365;
+			differentDays = Math.floor(differentDays);
+			return Math.abs(differentDays);
+		} else {
+			return Math.floor(differentDays);
+		}
 
 
 	};

@@ -8,32 +8,32 @@ window.onload = function(){
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
 	
-			if (str === "")
-				{
-					throw new Error("Ange något!");
-				}
-				
-			  var minarray = [];
-			  minarray = str.split("");
-			  
-			  for (var i = 0; i < str.length; i++) 
-			  {
-			  	if (minarray[i] === minarray[i].toUpperCase())
-			  	{
-			  		minarray[i] = minarray[i].toLowerCase();
-			  	}
-			  	else
-			  	{
-			  		minarray[i] = minarray[i].toUpperCase();
-			  	}
-			  }
-				
-		
-				
-				str = minarray.toString();
-				str = str.split(/,/).join("");
-				str = str.split(/[aA]/).join("#");
-				return str;
+		if (str === "")
+			{
+				throw new Error("Ange något!");
+			}
+			
+		  var minArray = [];
+		  minArray = str.split("");
+		  
+		  for (var i = 0; i < str.length; i++) 
+		  {
+		  	if (minArray[i] === minArray[i].toUpperCase())
+		  	{
+		  		minArray[i] = minArray[i].toLowerCase();
+		  	}
+		  	else
+		  	{
+		  		minArray[i] = minArray[i].toUpperCase();
+		  	}
+		  }
+			
+	
+			
+			str = minArray.toString();
+			str = str.split(/,/).join("");
+			str = str.split(/[aA]/).join("#");
+			return str;
 
 
 	};
