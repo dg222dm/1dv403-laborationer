@@ -13,7 +13,7 @@ window.onload = function(){
 		// Plats för förändring.
 		
 		
-		if(number == secret){
+		if(number == secret){  //varför ger inte === samma resultat? Har det att göra med typomvandlingen?
 			count += 1;
 			return [true, "Grattis du vann! Det hemliga talet var " + secret + " och du behövde " + count + " gissningar för att hitta det."];
 			
