@@ -32,11 +32,9 @@ averageAge = Math.round(averageAgeSum / ageArray.length);		//https://developer.m
 
 nameArray = persArr.map(function(nameArr){
 	return nameArr.name;
-});
+}).sort(function (a,b){return a.localeCompare(b, 'sv');});
 
 
-
-nameArray.sort(function (a,b){return a.localeCompare(b, 'sv');}); // hur fan funkar denna?
 names = nameArray.toString();
 names = names.split(",").join(", ");
 
