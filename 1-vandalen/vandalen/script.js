@@ -13,11 +13,10 @@ var nameArray = [];
 
 //AGE HANDLING
 
-for(var i = 0; i < persArr.length; i += 1){ 
-	
-	ageArray[i] = persArr[i].age;
-	
-}
+
+ageArray = persArr.map(function(ageArr){ 
+	return ageArr.age;	
+});
 
 //Min Max för Ålder
 minAge = Math.min.apply(null, ageArray); // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min
@@ -30,26 +29,21 @@ averageAge = Math.round(averageAgeSum / ageArray.length);		//https://developer.m
 //END OF AGE HANDLING
 
 //NAME HANDLING
-for(var i = 0; i < persArr.length; i += 1){
-	nameArray[i] = persArr[i].name;
-}
 
-nameArray.sort();
+nameArray = persArr.map(function(nameArr){
+	return nameArr.name;
+});
+
+
+
+nameArray.sort(function (a,b){return a.localeCompare(b, 'sv');}); // hur fan funkar denna?
 names = nameArray.toString();
 names = names.split(",").join(", ");
 
-console.log(names);
 
 //END OF NAME HANLDING
 
-
-/*
-	nameArray.sort(function (a,b){return a.localeCompare(b, 'sv');});
-	function (a,b){return a.localeCompare(b, 'sv');}
-*/
-
 return {minAge: minAge, maxAge: maxAge, averageAge: averageAge, names: names};
-
 };
 
 var data = [{name: "John Häggerud", age: 37}, {name: "Johan Leitet", age: 36}, {name: "Mats Loock", age: 46}];
