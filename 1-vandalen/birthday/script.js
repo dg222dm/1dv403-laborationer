@@ -9,8 +9,8 @@ window.onload = function(){
 		var ONE_DAY = 86400000;  // 86400000 = 24*60*60*1000 // hours*minutes*seconds*milliseconds För att få en heldag i milisekunder.
 		
 		var userBirthday = new Date(date);    	//Skapa objekt med data från användaren
-		var userMonth = userBirthday.getMonth(); //Plocka ut månaden
-		var userDay = userBirthday.getDate();	//Plocka ut dagen
+		var userMonth = userBirthday.getMonth(); 
+		var userDay = userBirthday.getDate();
 		
 		var currentDate = new Date(); 			//Skapa objekt med dagens datum
 		var currentYear = currentDate.getFullYear();
