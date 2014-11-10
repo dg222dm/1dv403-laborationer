@@ -8,6 +8,7 @@ var averageAge;
 var averageAgeSum;
 var names = "";
 var ageArray = [];
+var nameArray = [];
 
 
 //AGE HANDLING
@@ -28,18 +29,26 @@ averageAge = Math.round(averageAgeSum / ageArray.length);		//https://developer.m
 
 //END OF AGE HANDLING
 
+//NAME HANDLING
+for(var i = 0; i < persArr.length; i += 1){
+	nameArray[i] = persArr[i].name;
+}
 
-console.log(ageArray);
-console.log(minAge);
-console.log(maxAge);
-console.log(averageAgeSum);
-console.log(averageAge);
+nameArray.sort();
+names = nameArray.toString();
+names = names.split(",").join(", ");
+
+console.log(names);
+
+//END OF NAME HANLDING
+
+
 /*
 	nameArray.sort(function (a,b){return a.localeCompare(b, 'sv');});
 	function (a,b){return a.localeCompare(b, 'sv');}
 */
 
-return {minAge: minAge, maxAge: maxAge, averageAge: averageAge};
+return {minAge: minAge, maxAge: maxAge, averageAge: averageAge, names: names};
 
 };
 
