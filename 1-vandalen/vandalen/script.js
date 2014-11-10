@@ -13,7 +13,6 @@ var nameArray = [];
 
 //AGE HANDLING
 
-
 ageArray = persArr.map(function(ageArr){ 
 	return ageArr.age;	
 });
@@ -35,13 +34,14 @@ nameArray = persArr.map(function(nameArr){
 }).sort(function (a,b){return a.localeCompare(b, 'sv');});
 
 
-names = nameArray.toString();
-names = names.split(",").join(", ");
+names = nameArray.toString().split(",").join(", ");
 
 
 //END OF NAME HANLDING
 
-return {minAge: minAge, maxAge: maxAge, averageAge: averageAge, names: names};
+var result = {minAge: minAge, maxAge: maxAge, averageAge: averageAge, names: names};
+return result;
+
 };
 
 var data = [{name: "John Häggerud", age: 37}, {name: "Johan Leitet", age: 36}, {name: "Mats Loock", age: 46}];

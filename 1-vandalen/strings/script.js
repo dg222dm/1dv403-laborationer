@@ -28,8 +28,6 @@ window.onload = function(){
 		  	}
 		  }
 			
-	
-			
 			str = myArray.toString();
 			str = str.split(/,/).join("");
 			str = str.split(/[aA]/).join("#");
