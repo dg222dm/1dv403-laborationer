@@ -13,24 +13,24 @@ window.onload = function(){
 				throw new Error("Ange något!");
 			}
 			
-		  var minArray = [];
-		  minArray = str.split("");
+		  var myArray = [];
+		  myArray = str.split("");
 		  
 		  for (var i = 0; i < str.length; i++) 
 		  {
-		  	if (minArray[i] === minArray[i].toUpperCase())
+		  	if (myArray[i] === myArray[i].toUpperCase()) // är elementet samt typ stor bokstav 
 		  	{
-		  		minArray[i] = minArray[i].toLowerCase();
+		  		myArray[i] = myArray[i].toLowerCase(); // elementet på i blir litenbokstav och placeras i myArray på plats [i]
 		  	}
 		  	else
 		  	{
-		  		minArray[i] = minArray[i].toUpperCase();
+		  		myArray[i] = myArray[i].toUpperCase();
 		  	}
 		  }
 			
 	
 			
-			str = minArray.toString();
+			str = myArray.toString();
 			str = str.split(/,/).join("");
 			str = str.split(/[aA]/).join("#");
 			return str;

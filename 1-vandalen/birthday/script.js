@@ -6,32 +6,41 @@ window.onload = function(){
 	var birthday = function(date){
 	
 
-		var now = new Date();
+		var ONE_DAY = 86400000;  // 86400000 = 24*60*60*1000 // hours*minutes*seconds*milliseconds För att få en heldag i milisekunder.
 		
-		var birthday = date.split("-").join(",");
+		var userBirthday = new Date(date);    	//Skapa objekt med data från användaren
+		var userMonth = userBirthday.getMonth(); //Plocka ut månaden
+		var userDay = userBirthday.getDate();	//Plocka ut dagen
 		
-		birthday = new Date(date);
+		var currentDate = new Date(); 			//Skapa objekt med dagens datum
+		var currentYear = currentDate.getFullYear();
+		var currentMonth = currentDate.getMonth();
+		var currentDays = currentDate.getDate();
 		
-		console.log(now);
-		console.log(birthday);
+		var birthdayMonth;
+		var birthdayDay;
+		var birthdayYear;
+		
+		if(currentMonth == userMonth && userDay < currentDays){ //Ifall det är rätt månad men dagen har redan varit så ska det läggas till ett år.
+		
+			birthdayYear = currentYear+1;
 			
-		
-		var timeDifference = now.getTime() - birthday.getTime() ;
-		
-		var differentDays = (timeDifference / (1000 * 3600 * 24));
-		
-		differentDays %= 365;
-		
-		if (differentDays < 0){
-			differentDays = Math.floor(differentDays);
-			return Math.abs(differentDays);
-		} else if (differentDays > 1){
-			differentDays -= 365;
-			differentDays = Math.floor(differentDays);
-			return Math.abs(differentDays);
-		} else {
-			return Math.floor(differentDays);
+		} else if (userMonth < currentMonth){
+			
+			 birthdayYear = currentYear+1;
 		}
+		else{
+			
+			 birthdayYear = currentYear;
+		}
+		
+		 birthdayMonth = userMonth; //
+		 birthdayDay = userDay + 1;
+		 
+		 var birthdayObject = new Date(birthdayYear, birthdayMonth, birthdayDay); 
+		 var differenceDates = Math.floor(Math.abs(birthdayObject.getTime() - currentDate.getTime())/(ONE_DAY));  //http://www.vijayjoshi.org/2008/10/24/faq-calculate-number-of-days-between-two-dates-in-javascript/
+		
+		return differenceDates;
 
 
 	};
