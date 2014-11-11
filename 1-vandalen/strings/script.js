@@ -7,13 +7,15 @@ window.onload = function(){
 		// Plats för förändring.		
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
+		
+		var myArray = [];
 	
 		if (str === "")
 			{
 				throw new Error("Ange något!");
 			}
 			
-		  var myArray = [];
+		  
 		  myArray = str.split("");
 		  
 		  for (var i = 0; i < str.length; i++) 
