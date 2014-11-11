@@ -49,6 +49,6 @@ var result = {minAge: minAge, maxAge: maxAge, averageAge: averageAge, names: nam
 return result;
 
 };
-var data = [{name: "John Häggerud", age: "d"}, {name: "Johan Leitet", age: 36}, {name: "Mats Loock", age: 46}];
+var data = [{name: "John Häggerud", age: 37}, {name: "Johan Leitet", age: 36}, {name: "Mats Loock", age: 46}];
 var result = makePerson(data);
 console.log(result);
