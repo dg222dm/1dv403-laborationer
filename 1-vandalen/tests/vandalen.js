@@ -1,5 +1,5 @@
 test( "Datatyper", function() {
-  var indata = [{name: "John Häggerud", born: "1976-02-23"}, {name: "Johan Leitet", born: "1977-12-12"},  {name: "Mats Loock", born: "1967-06-02"}];
+  var indata = [{name: "John Häggerud", age: 45}, {name: "Johan Leitet", age: 37},  {name: "Mats Loock", age: 32}];
 
   ok( typeof makePerson(indata) == "object" , "Funktionen returnerar ett objekt." );
   
@@ -12,8 +12,8 @@ test( "Datatyper", function() {
 
 test( "Namnhantering (names)", function() {
 
-  var indata = [{name: "John Häggerud", born: "1976-02-23"}, {name: "Johan Leitet", born: "1977-12-12"},  {name: "Mats Loock", born: "1967-06-02"}];
-  var indata2 = [{name: "Ö", born: "1976-02-23"}, {name: "Å", born: "1977-12-12"},  {name: "Ä", born: "1967-06-02"}];
+  var indata = [{name: "John Häggerud", age: 43}, {name: "Johan Leitet", age: 34},  {name: "Mats Loock", age: 23}];
+  var indata2 = [{name: "Ö", age: 43}, {name: "Å", age: 23},  {name: "Ä", age: 34}];
 
 
   equal( makePerson(indata).names, "Johan Leitet, John Häggerud, Mats Loock" , "Namn returneras sorterat" );
@@ -23,7 +23,7 @@ test( "Namnhantering (names)", function() {
 
 test( "Åldershantering (maxAge, minAge, aveargeAge)", function() {
 
-  var indata2 = [{name: "John Häggerud", born: "1976-02-23"}, {name: "Johan Leitet", born: "1977-12-12"},  {name: "Mats Loock", born: "1967-06-02"}];
+  var indata2 = [{name: "John Häggerud", age: 12}, {name: "Johan Leitet", age: 23},  {name: "Mats Loock", age: 23}];
   var indata = [{name: "John Häggerud", age: 37}, {name: "Johan Leitet", age: 36},  {name: "Mats Loock", age: 46}];
   
   equal( makePerson(indata).maxAge, 46, "maxAge är 46" );

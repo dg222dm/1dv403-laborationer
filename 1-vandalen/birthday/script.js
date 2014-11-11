@@ -38,7 +38,7 @@ window.onload = function(){
 			 birthdayYear = currentYear;
 		}
 		
-		 birthdayMonth = userMonth; //
+		 birthdayMonth = userMonth;
 		 birthdayDay = userDay + 1;
 		 
 		 var birthdayObject = new Date(birthdayYear, birthdayMonth, birthdayDay); 
