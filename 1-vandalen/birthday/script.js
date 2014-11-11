@@ -21,6 +21,10 @@ window.onload = function(){
 		var birthdayDay;
 		var birthdayYear;
 		
+		if(date === ""){
+			throw new Error ("Ange ett datum!");
+		}
+		
 		if(currentMonth == userMonth && userDay < currentDays){ //Ifall det är rätt månad men dagen har redan varit så ska det läggas till ett år.
 		
 			birthdayYear = currentYear+1;
