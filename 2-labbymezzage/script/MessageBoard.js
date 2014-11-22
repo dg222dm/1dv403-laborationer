@@ -3,21 +3,23 @@
 var MessageBoard = {
     
     messages: [],
+    amountOfMessages: 0,
+    init: function(){
+        
+        var button = document.getElementById("button");
+        button.onclick = MessageBoard.createMessage;
+        
+    },
     
-    init:function(){
+    createMessage:function(){
         
+        var input = document.getElementById("textarea").value;
         
-        // alert(mess); //Använder toString för utskrift
-        // alert(mess.getText()); // Skriver enbart ut texten.
-        // mess.setText("En annan text");
-        // alert(mess); //skriver ut meddelandet med ändrad text
+        MessageBoard.messages.push(new Message(input, new Date()));
+        MessageBoard.amountOfMessages =+ 1;
         
-        
-        
-        MessageBoard.messages.push(new Date());
-           
-        
-        
+        document.getElementById("numberOfMessages").innerHTML = "Antal Meddelanden: " + MessageBoard.amountOfMessages;
+
     }
 };
 
