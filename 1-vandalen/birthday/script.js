@@ -42,7 +42,7 @@ window.onload = function(){
 		 birthdayDay = userDay + 1;
 		 
 		 var birthdayObject = new Date(birthdayYear, birthdayMonth, birthdayDay); 
-		 var differenceDates = Math.floor(Math.abs(birthdayObject.getTime() - currentDate.getTime())/(ONE_DAY));  //http://www.vijayjoshi.org/2008/10/24/faq-calculate-number-of-days-between-two-dates-in-javascript/
+		 var differenceDates = Math.floor(birthdayObject.getTime() - currentDate.getTime())/(ONE_DAY);  //http://www.vijayjoshi.org/2008/10/24/faq-calculate-number-of-days-between-two-dates-in-javascript/
 		
 		return differenceDates;
 
