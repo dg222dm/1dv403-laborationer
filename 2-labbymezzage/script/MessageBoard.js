@@ -39,7 +39,7 @@ var MessageBoard = {
         var timeImg = document.createElement("img");
         
         deleteImg.src = "delete.png";
-        timeImg.src = "klocka.gif";
+        timeImg.src = "time.png";
         
         
         var text = document.createElement("p");
@@ -62,9 +62,10 @@ var MessageBoard = {
             if(confirm("Vill du ta bort detta meddelande?"))
             {
                 MessageBoard.amountOfMessages = MessageBoard.amountOfMessages -1;
+                text.parentNode.removeChild(text);
+                document.getElementById("numberOfMessages").innerHTML = "Antal Meddelanden: "+MessageBoard.amountOfMessages;
             }
-            text.parentNode.removeChild(text);
-            document.getElementById("numberOfMessages").innerHTML = "Antal Meddelanden: "+MessageBoard.amountOfMessages;
+
         });
         
         timeImg.addEventListener("click", function(e){
@@ -72,5 +73,4 @@ var MessageBoard = {
         });
     }
 };
-
 window.onload = MessageBoard.init; //Säger till webbläsaren när alla resureser är färdigladdade och refererar då till functionen i MessageBoard.  
