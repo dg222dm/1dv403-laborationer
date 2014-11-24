@@ -9,6 +9,7 @@ main
 
 #messagearea
 {
+    
     display:flex;
     flex-direction:column-reverse;
     font-size:120%;
@@ -18,4 +19,12 @@ main
     word-break:break-all;
     overflow-y:scroll;
     max-height:600px;
+}
+
+.timeImg, .deleteImg
+{
+    height:24px;
+    width:24px;
+    min-height:24px;
+    min-width:24px;
 }
