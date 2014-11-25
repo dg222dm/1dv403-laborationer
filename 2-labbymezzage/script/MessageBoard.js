@@ -26,7 +26,6 @@ var MessageBoard = {
         
         MessageBoard.messages.push(new Message(input, new Date())); //skapa nytt objekt och pusha det till arrayn
         
-        MessageBoard.amountOfMessages += 1;
     
         document.getElementById("numberOfMessages").innerHTML = "Antal Meddelanden: " + MessageBoard.messages.length;
         MessageBoard.renderMessage(MessageBoard.messages.length-1); //Kalla på renderMessage med arrayns längd - 1 
@@ -61,9 +60,10 @@ var MessageBoard = {
         deleteImg.addEventListener("click", function(e){
             if(confirm("Vill du ta bort detta meddelande?"))
             {
-                MessageBoard.amountOfMessages = MessageBoard.amountOfMessages -1;
-                text.parentNode.removeChild(text);
-                document.getElementById("numberOfMessages").innerHTML = "Antal Meddelanden: "+MessageBoard.amountOfMessages;
+                
+                MessageBoard.messages.splice(messageID, 1);
+                document.getElementById("numberOfMessages").innerHTML = "Antal Meddelanden: "+MessageBoard.messages.length;
+                MessageBoard.renderMessages();
             }
 
         });
@@ -71,6 +71,13 @@ var MessageBoard = {
         timeImg.addEventListener("click", function(e){
             alert(MessageBoard.messages[messageID].getDate());
         });
+    },
+    renderMessages: function(){
+        document.getElementById("messageArea").innerHTML = "";
+        
+        for(var i = 0; i < MessageBoard.messages.length; i += 1){
+            MessageBoard.renderMessage(i);
+        }
     }
 };
 window.onload = MessageBoard.init; //Säger till webbläsaren när alla resureser är färdigladdade och refererar då till functionen i MessageBoard.  
