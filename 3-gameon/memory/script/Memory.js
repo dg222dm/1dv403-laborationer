@@ -2,37 +2,46 @@
 
 var Memory = {
     
-    memory_array: [],
+    memoryArray: [], //Skapa en egenskap på ditt objekt som senare kommer att referera till den utslumpade arrayen
+    rows:2,
+    cols: 2,
+    count: 0,
     
-    init: function(){
-        
-        var rows = 4;
-        var cols = 4;
-        
-        //Få den slumpade arrayn
-        Memory.memory_array = RandomGenerator.getPictureArray(rows,cols);
-        
-        //Kalla på createBoard med memory arrayn
-        Memory.createBoard(Memory.memory_array);
-        
-    },
-    createBoard: function(memoryArray, rows, cols){
-        
-        //Skapa div tags i html dokumentet
-        var newDiv = document.createElement("div");
-        document.getElementsByTagName("main")[0].appendChild(newDiv);
-        var innerDiv = document.createElement("div");
-        newDiv.appendChild(innerDiv);
-        
-        //Skapa en table i html dokumentet
+    init:function(){
+        Memory.memoryArray = RandomGenerator.getPictureArray(Memory.rows,Memory.cols); //I init-metoden anropar du arrayslumpsmetoden och sparar resultatet i egenskapen du skapade i 4an
+        //skapa array objekt
+        //console.log(Memory.memoryArray);
         var table = document.createElement("table");
-        table.border = 1;
-        
-        //Arbeta med table. Generera cell och kolumner
-        for (var i = 0; i < rows; i += 1){
+        table.border = 2;
+ 
+        var memory_board = document.getElementById("memory_board");
+       
+        for (var i = 0; i < Memory.rows; i += 1)
+        {
             var row = document.createElement("tr");
             table.appendChild(row);
+            console.log(Memory.memoryArray[i]+".png");
+           
+            for (var j = 0; j < Memory.cols; j += 1)
+            {
+                var cell = document.createElement("td");
+                var img = document.createElement("img");
+                img.src = "pics/0.png";
+                cell.appendChild(img);
+                row.appendChild(cell);
+            }
+            table.appendChild(row);
         }
+        memory_board.appendChild(table);
+        
+        
+    },
+    
+    flipTile: function(){
         
     }
-}; window.onload = Memory.init;
+        
+};
+
+window.onload = Memory.init;
+
