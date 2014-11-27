@@ -5,7 +5,7 @@ var Memory = {
     memoryArray: [], //Skapa en egenskap på ditt objekt som senare kommer att referera till den utslumpade arrayen
     rows:4,
     cols: 4,
-    count: 0,
+    indexCount: 0,
     
     init:function(){
         
@@ -13,31 +13,39 @@ var Memory = {
         Memory.memoryArray = RandomGenerator.getPictureArray(Memory.rows,Memory.cols); //I init-metoden anropar du arrayslumpsmetoden och sparar resultatet i egenskapen du skapade i 4an
         //console.log(Memory.memoryArray);
         
-        //Skapa en table
-        var table = document.createElement("table");
-        table.border = 2;
+        //Skapa en tabell
+        Memory.table = document.createElement("table");
+        Memory.table.border = 2;
  
         //ta in div taggen 
-        var memory_board = document.getElementById("memory_board");
+        Memory.gameBoard = document.getElementById("memory_board");
        
-        //skriv ut tablen
-        for (var i = 0; i < Memory.rows; i += 1)
+        //skriv ut tabell
+        for (var i = 0; i < Memory.rows; i += 1) //Varje rad
         {
             var row = document.createElement("tr");
-            table.appendChild(row);
+            Memory.table.appendChild(row);
             console.log(Memory.memoryArray[i]);
-           
-            for (var j = 0; j < Memory.cols; j += 1)
+            
+            for (var j = 0; j < Memory.cols; j += 1) //Varje cell
             {
-                var cell = document.createElement("td");
-                var img = document.createElement("img");
-                img.src = "pics/0.png";
-                cell.appendChild(img);
-                row.appendChild(cell);
+                Memory.indexCount += 1;
+                Memory.cell = document.createElement("td");
+                Memory.img = document.createElement("img");
+                Memory.aTag = document.createElement("a");
+                Memory.img.className = "pics/"+Memory.memoryArray[Memory.indexCount]+".png"; //[0,1,2,3] om arrayn får värdena [2,3,2,3] så ska det bli [2.png, 3.png, 2.png, 3.png]
+                Memory.aTag.href = "#href";
+                //console.log(Memory.memoryArray[j]);
+                Memory.img.src = "pics/0.png";
+                Memory.aTag.appendChild(Memory.img);
+                Memory.cell.appendChild(Memory.aTag);
+                row.appendChild(Memory.cell);
                 
-            }table.appendChild(row);
+                
+                
+            }Memory.table.appendChild(row);
         }
-        memory_board.appendChild(table);
+        Memory.gameBoard.appendChild(Memory.table);
     }
 };
 
