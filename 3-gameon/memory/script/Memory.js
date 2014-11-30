@@ -6,12 +6,15 @@ var Memory = {
     rows:4,
     cols: 4,
     indexCount: 0,
+    lastClicked: null,
+    flips: 0,
+    imageDefault: "pics/0.png",
     
     init:function(){
         
         //Skapa ett objekt
         Memory.memoryArray = RandomGenerator.getPictureArray(Memory.rows,Memory.cols); //I init-metoden anropar du arrayslumpsmetoden och sparar resultatet i egenskapen du skapade i 4an
-        //console.log(Memory.memoryArray);
+        console.log(Memory.memoryArray);
         
         //Skapa en tabell
         Memory.table = document.createElement("table");
@@ -25,29 +28,55 @@ var Memory = {
         {
             var row = document.createElement("tr");
             Memory.table.appendChild(row);
-            console.log(Memory.memoryArray[i]);
-            
             for (var j = 0; j < Memory.cols; j += 1) //Varje cell
             {
+                var cell = document.createElement("td");
+                var img = document.createElement("img");
+                var aTag = document.createElement("a");
+                aTag.picture = "pics/"+Memory.memoryArray[Memory.indexCount]+ ".png"; //Memory.memoryArray[Memory.indexCount];
+                aTag.href = "#href";
+                img.src = Memory.imageDefault; //http://www.w3schools.com/jsref/prop_img_src.asp
+                aTag.appendChild(img);
+                cell.appendChild(aTag);
+                row.appendChild(cell);
+                aTag.addEventListener("click", Memory.flipTile);
                 Memory.indexCount += 1;
-                Memory.cell = document.createElement("td");
-                Memory.img = document.createElement("img");
-                Memory.aTag = document.createElement("a");
-                Memory.img.className = "pics/"+Memory.memoryArray[Memory.indexCount]+".png"; //[0,1,2,3] om arrayn får värdena [2,3,2,3] så ska det bli [2.png, 3.png, 2.png, 3.png]
-                Memory.aTag.href = "#href";
-                //console.log(Memory.memoryArray[j]);
-                Memory.img.src = "pics/0.png";
-                Memory.aTag.appendChild(Memory.img);
-                Memory.cell.appendChild(Memory.aTag);
-                row.appendChild(Memory.cell);
-                
-                
-                
-            }Memory.table.appendChild(row);
+            }
+            Memory.table.appendChild(row);
         }
         Memory.gameBoard.appendChild(Memory.table);
+    },
+    flipTile:function()
+    {
+        this.firstChild.src = this.picture;
+        Memory.flips += 1;
+        console.log(Memory.flips);
+        if(Memory.flips === 2)
+        {
+            var currentFlip = this;
+            var last = Memory.lastClicked;
+            //console.log(last);
+            //console.log(current);
+            //console.log(current.picture);
+            
+            if(currentFlip.picture === last.picture) //varför fungerar inte current === last? för att det pekar på 2 atags?
+            {
+                currentFlip.removeEventListener("click", Memory.flipTile);
+                last.removeEventListener("click", Memory.flipTile);
+            }
+            else
+            {
+                setTimeout(function() 
+                {
+                    Memory.currentFlip = Memory.imageDefault;   
+                }, 800);
+            }
+            Memory.flips = 0;
+            console.log(Memory.flips);
+        }
+        Memory.lastClicked = this;
     }
-};
 
+};
 window.onload = Memory.init;
 
