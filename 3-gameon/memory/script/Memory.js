@@ -66,11 +66,14 @@ var Memory = {
                 
                     if(currentFlip.picture === last.picture)
                     {
-                    
-                        currentFlip.removeEventListener("click", Memory.flipTile);
-                        last.removeEventListener("click", Memory.flipTile);
-                        Memory.run = true;
-                        Memory.turns += 1;
+                        setTimeout(function()
+                        {
+                            currentFlip.removeEventListener("click", Memory.flipTile);
+                            last.removeEventListener("click", Memory.flipTile);
+                            Memory.run = true;
+                            Memory.turns += 1;
+                        }, 600);
+                       
                     }
                     else
                     {
