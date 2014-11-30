@@ -8,12 +8,14 @@ var Memory = {
     indexCount: 0,
     lastClicked: null,
     flips: 0,
+    turns: 0,
+    tries: 0,
     imageDefault: "pics/0.png",
     
     init:function(){
         
         //Skapa ett objekt
-        Memory.memoryArray = RandomGenerator.getPictureArray(Memory.rows,Memory.cols); //I init-metoden anropar du arrayslumpsmetoden och sparar resultatet i egenskapen du skapade i 4an
+        Memory.memoryArray = RandomGenerator.getPictureArray(Memory.rows,Memory.cols); 
         console.log(Memory.memoryArray);
         
         //Skapa en tabell
@@ -41,42 +43,54 @@ var Memory = {
                 row.appendChild(cell);
                 aTag.addEventListener("click", Memory.flipTile);
                 Memory.indexCount += 1;
+                Memory.run = true;
+                
             }
             Memory.table.appendChild(row);
         }
         Memory.gameBoard.appendChild(Memory.table);
     },
-    flipTile:function()
-    {
-        this.firstChild.src = this.picture;
-        Memory.flips += 1;
-        console.log(Memory.flips);
-        if(Memory.flips === 2)
+        flipTile:function()
         {
-            var currentFlip = this;
-            var last = Memory.lastClicked;
-            //console.log(last);
-            //console.log(current);
-            //console.log(current.picture);
-            
-            if(currentFlip.picture === last.picture) //varför fungerar inte current === last? för att det pekar på 2 atags?
+            if(Memory.run === true)
             {
-                currentFlip.removeEventListener("click", Memory.flipTile);
-                last.removeEventListener("click", Memory.flipTile);
-            }
-            else
-            {
-                setTimeout(function() 
+                this.firstChild.src = this.picture;
+                Memory.flips += 1;
+                if(Memory.flips === 2)
                 {
-                    Memory.currentFlip = Memory.imageDefault;   
-                }, 800);
+                    var currentFlip = this;
+                    var last = Memory.lastClicked;
+                    Memory.run = false;
+                    Memory.tries += 1;
+                    document.getElementById("tries").innerHTML = "Tries: " + Memory.tries;
+                
+                    if(currentFlip.picture === last.picture)
+                    {
+                    
+                        currentFlip.removeEventListener("click", Memory.flipTile);
+                        last.removeEventListener("click", Memory.flipTile);
+                        Memory.run = true;
+                        Memory.turns += 1;
+                    }
+                    else
+                    {
+                        setTimeout(function() 
+                        {
+                            currentFlip.firstChild.src = Memory.imageDefault;
+                            last.firstChild.src = Memory.imageDefault;
+                            Memory.run = true;
+                        }, 900);
+                    }
+                    Memory.flips = 0;
+                
+                }
+                Memory.lastClicked = this;
             }
-            Memory.flips = 0;
-            console.log(Memory.flips);
+            if (Memory.turns === Memory.memoryArray.length / 2)
+            {
+                document.getElementById("win").innerHTML = "Win";
+            }
         }
-        Memory.lastClicked = this;
-    }
-
 };
 window.onload = Memory.init;
 
