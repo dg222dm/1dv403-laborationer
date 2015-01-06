@@ -50,7 +50,7 @@ var Memory = {
         }
         Memory.gameBoard.appendChild(Memory.table);
     },
-        flipTile:function()
+        flipTile:function(e)
         {
             if(Memory.run === true)
             {
