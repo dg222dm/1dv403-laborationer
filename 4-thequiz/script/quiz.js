@@ -14,9 +14,6 @@ var quizProgram = {
 
     },
 
-
-
-
     //Function Use: Establish contact with given server
     requestToServer: function(url, stringOrNull){
 
@@ -82,6 +79,7 @@ var quizProgram = {
             }
         };
     },
+
     //Function Use: Handles the object when it comes to sending
     sendAnswer: function(url, answer) {
 
