@@ -28,6 +28,7 @@ var quizProgram = {
                 if (qRequest.status === 200) {
                     quizProgram.questionTries = 0;
                     quizProgram.object = JSON.parse(qRequest.responseText);
+
                     document.getElementById("question").innerHTML = quizProgram.object.question;
                     quizProgram.answer(quizProgram.object.nextURL);
                 }
