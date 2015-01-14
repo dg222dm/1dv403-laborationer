@@ -2,7 +2,7 @@
 
 var Memory = {
     
-    memoryArray: [], //Skapa en egenskap på ditt objekt som senare kommer att referera till den utslumpade arrayen
+    memoryArray: [], 
     rows:4,
     cols: 4,
     indexCount: 0,
@@ -14,15 +14,14 @@ var Memory = {
     
     init:function(){
         
-        //Skapa ett objekt
+        
         Memory.memoryArray = RandomGenerator.getPictureArray(Memory.rows,Memory.cols); 
         console.log(Memory.memoryArray);
         
-        //Skapa en tabell
+        
         Memory.table = document.createElement("table");
         Memory.table.border = 2;
  
-        //ta in div taggen 
         Memory.gameBoard = document.getElementById("memory_board");
        
         //skriv ut tabell
@@ -35,7 +34,7 @@ var Memory = {
                 var cell = document.createElement("td");
                 var img = document.createElement("img");
                 var aTag = document.createElement("a");
-                aTag.picture = "pics/"+Memory.memoryArray[Memory.indexCount]+ ".png"; //Memory.memoryArray[Memory.indexCount];
+                aTag.picture = "pics/"+Memory.memoryArray[Memory.indexCount]+ ".png";
                 aTag.href = "#href";
                 img.src = Memory.imageDefault; //http://www.w3schools.com/jsref/prop_img_src.asp
                 aTag.appendChild(img);

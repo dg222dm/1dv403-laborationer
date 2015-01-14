@@ -22,13 +22,13 @@ var MessageBoard = {
     
     createMessage:function(){
         
-        var input = document.getElementById("textarea").value; //spara det som skrivs i textarea till value
+        var input = document.getElementById("textarea").value; 
         
-        MessageBoard.messages.push(new Message(input, new Date())); //skapa nytt objekt och pusha det till arrayn
+        MessageBoard.messages.push(new Message(input, new Date())); 
         
     
         document.getElementById("numberOfMessages").innerHTML = "Antal Meddelanden: " + MessageBoard.messages.length;
-        MessageBoard.renderMessage(MessageBoard.messages.length-1); //Kalla på renderMessage med arrayns längd - 1 
+        MessageBoard.renderMessage(MessageBoard.messages.length-1);
 
     },
     
@@ -80,4 +80,4 @@ var MessageBoard = {
         }
     }
 };
-window.onload = MessageBoard.init; //Säger till webbläsaren när alla resureser är färdigladdade och refererar då till functionen i MessageBoard.  
+window.onload = MessageBoard.init;

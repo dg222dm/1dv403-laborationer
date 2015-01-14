@@ -1,0 +1,108 @@
+
+#desk {
+    width:1024px;
+    height:640px;
+    margin-left:auto;
+    margin-right:auto;
+    background-image:url(../img/spaceinvader.jpg);
+    background-size:inherit;
+    position:relative;
+}
+
+footer {
+    width:100%;
+    height:75px;
+    position:absolute;
+    bottom:0;
+    border-top:5px solid black;
+    background-color: rgba(0, 0, 0, 0.53);
+}
+
+footer img {
+    position: relative;
+    top: 5px;
+    margin-left: 5px;
+}
+
+body {
+    margin-left:auto;
+    margin-right:auto;
+    background-color:black;
+}
+
+#gallery {
+    height: 65px;
+    width: 65px;
+}
+
+.WindowFrame {
+    border:1px solid #6d7371;
+    position:fixed;
+    display:inline-block;
+    background-color: white;
+
+}
+
+.WindowFooter {
+    height: 25px;
+    background-color: #353537;
+
+
+}
+
+.WindowFooter img {
+    height: 20px;
+    width: auto;
+    float: right;
+    position: relative;
+    top: 3px;
+}
+
+.WindowHeader {
+    height: 40px;
+    background-color: #353537;
+
+}
+
+.HeaderIcon {
+    float: left;
+    width: 30px;
+    height: auto;
+    position: relative;
+    top: 5px;
+    margin-left: 3px;
+
+}
+
+.CloseIcon {
+    float: right;
+    width: 25px;
+    height: auto;
+    position: relative;
+    top: 6px;
+    margin-right: 3px;
+}
+
+.WindowContent {
+    display:inline-block;
+    height:400px;
+    width:310px;
+    overflow-y: scroll;
+
+}
+
+.imageBox {
+    display: inline-block;
+    padding: 4px;
+    border: 1px solid;
+    margin: 5px;
+    border-radius: 4px;
+    background-color: grey;
+
+}
+
+.imageBox a img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
